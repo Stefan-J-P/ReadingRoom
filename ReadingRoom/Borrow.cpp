@@ -30,7 +30,8 @@ std::map<std::shared_ptr<Reader>, double> Borrow::createMap(std::unordered_set<s
 		}
 		if (m.find(b->get_reader()) != m.end())
 		{
-			//tzn ze reader juz jest w mapie i dodajesz do jego dotychczasowej kary nowa
+			
+			// add fine to each reader
 			m[b->get_reader()] += fine;
 		}
 		else

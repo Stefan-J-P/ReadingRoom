@@ -43,7 +43,7 @@ struct BookHasher
 };
 
 
-// COMPARATOR , SORTOWANIE , OPERATOR== ?!?!
+
 
 struct BookComparatorShdPtr
 {
