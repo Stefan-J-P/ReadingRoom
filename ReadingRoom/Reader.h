@@ -45,6 +45,6 @@ public:
 	bool operator==(const Reader& r) const;
 
 
-
+	 
 
 };

@@ -58,20 +58,13 @@ std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparator
 {
 
 	std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows;
-
 	std::unordered_set<std::shared_ptr<Book>, BookHasher, BookComparatorShdPtr>::iterator it_books = books.begin();
 
 	for (const auto& reader : readers)
 	{
 		const std::shared_ptr<Book> s1 = *it_books;
-		borrows.insert(std::make_shared<Borrow>(
-			Borrow(
-				std::make_shared<Book>(*s1),
-				std::make_shared<Reader>(*reader),
-				"2017-01-02"
-			)
-			)
-		);
+		borrows.insert(std::make_shared<Borrow>
+			(Borrow(std::make_shared<Book>(*s1), std::make_shared<Reader>(*reader), borrow_date = Borrow::generate_date()));
 		++it_books;
 	}
 	return borrows;
@@ -81,7 +74,7 @@ std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparator
 my_date Borrow::generate_date()
 {
 
-	std::string current_date="";
+	std::string current_date = "";
 	
 	do 
 	{
@@ -91,19 +84,6 @@ my_date Borrow::generate_date()
 	} while (!std::regex_match(current_date, std::regex(R"(\d{4}-\d{2}-\d{2})")));
 
 	return my_date(current_date);
-
-	/*std::stringstream ss;
-	ss.str(current_date);
-
-	std::vector<int> v;
-	std::string str_temp;
-
-	while (std::getline(ss, str_temp, '-'))
-	{
-		v.emplace_back(std::stoi(str_temp));
-	}
-
-	return std::make_tuple(v[0], v[1], v[2]);*/
 }
 
 

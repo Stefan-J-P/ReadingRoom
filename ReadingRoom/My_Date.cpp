@@ -53,12 +53,12 @@ std::tuple<int, int, int> my_date::convert_str_to_int_date(const std::string& da
 	}
 
 	std::stringstream ss;
-	ss.str(date_str);	// ladujemy napis do strumienia ss
+	ss.str(date_str);	// insert string to stream
 
 	std::vector<int> v;
 
 	std::string str;
-	while (std::getline(ss, str, '-'))	// rozdzielamy po myslniku i ladujemy do str
+	while (std::getline(ss, str, '-'))	// separate string after '-' and insert to string
 	{
 		v.emplace_back(std::stoi(str));	// stoi --> string to int , ladujemy do vectora
 	}

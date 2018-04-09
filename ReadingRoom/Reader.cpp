@@ -40,9 +40,9 @@ std::string Reader::get_first_name() const
 	return first_name;
 }
 
-void Reader::set_first_name(const std::string& imie)
+void Reader::set_first_name(const std::string& f_name)
 {
-	this->first_name = imie;
+	this->first_name = f_name;
 }
 
 // ----------------------------------------------------------------------------------------
@@ -51,9 +51,9 @@ std::string Reader::get_last_name() const
 	return last_name;
 }
 
-void Reader::set_last_name(const std::string& nazwisko)
+void Reader::set_last_name(const std::string& l_name)
 {
-	this->last_name = nazwisko;
+	this->last_name = l_name;
 }
 
 // ----------------------------------------------------------------------------------------
@@ -62,9 +62,9 @@ int Reader::get_age() const
 	return age;
 }
 
-void Reader::set_age(const int wiek)
+void Reader::set_age(const int age)
 {
-	this->age = wiek;
+	this->age = age;
 }
 
 // ----------------------------------------------------------------------------------------
@@ -73,9 +73,9 @@ double Reader::get_fine() const
 	return fine;
 }
 
-void Reader::set_fine(const double wysKary)
+void Reader::set_fine(const double fine_amount)
 {
-	this->fine = wysKary;
+	this->fine = fine_amount;
 }
 
 
