@@ -1,5 +1,30 @@
 #include "Reader.h"
 
+Reader::Reader()
+{
+	std::string fn;
+	std::string ln;
+	int l_age = 0;
+
+
+	std::cout << "Enter reader's first name" << std::endl;
+	//std::cin >> r1.get_first_name();	pobieranie przez cin, tylko do pierwszej spacji
+	std::getline(std::cin, fn);
+
+	std::cout << "Enter reader's last name" << std::endl;
+	//std::cin >> r1.get_last_name();
+	std::getline(std::cin, ln);
+
+	std::cout << "Enter reader's age" << std::endl;
+	std::cin >> l_age;
+	std::cin.get();
+
+	set_first_name(fn);
+	set_last_name(ln);
+	set_age(l_age);
+	set_fine(0);
+}
+
 // CONSTRUCTOR ============================================================================
 Reader::Reader(const std::string& imie, const std::string& nazwisko, const int wiek, const double wysKary)
 {
@@ -52,6 +77,7 @@ void Reader::set_fine(const double wysKary)
 {
 	this->fine = wysKary;
 }
+
 
 // =================================================================
 bool Reader::operator==(const Reader& r) const

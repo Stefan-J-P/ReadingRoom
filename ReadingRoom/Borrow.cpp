@@ -1,5 +1,6 @@
 #include "Borrow.h"
 
+
 // GETTERS & SETTERS =======================================================================================================
 std::shared_ptr<Reader> Borrow::get_reader() const
 {
@@ -11,13 +12,13 @@ std::shared_ptr<Book> Borrow::get_book() const
 	return book;
 }
 // -------------------------------------------------------------
-std::string Borrow::get_borrow_date() const
+my_date Borrow::get_borrow_date() const
 {
 	return borrow_date;
 }
 
 // ============================================================
-std::map<std::shared_ptr<Reader>, double> Borrow::createMap(std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows)
+std::map<std::shared_ptr<Reader>, double> Borrow::make_borrow(std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows)
 {
 	std::map<std::shared_ptr<Reader>, double> m;
 
@@ -43,15 +44,12 @@ std::map<std::shared_ptr<Reader>, double> Borrow::createMap(std::unordered_set<s
 	return m;
 }
 
+
 // -------------------------------------------------------------
 
 // CONSTRUCTOR ============================================================================================================
-Borrow::Borrow(const std::shared_ptr<Book>& book, const std::shared_ptr<Reader>& reader, const std::string& borrow_date)
-{
-	this->book = book;
-	this->reader = reader;
-	this->borrow_date = borrow_date;
-}
+Borrow::Borrow(const std::shared_ptr<Book>& book, const std::shared_ptr<Reader>& reader, const my_date& borrow_date)
+: book(book), reader(reader), borrow_date(borrow_date) {}
 
 // GENERATE BORROW LIST ===================================================================================================
 std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> Borrow::generate_borrow_list(
@@ -78,6 +76,37 @@ std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparator
 	}
 	return borrows;
 }
+
+// GENERATE DATE ========================================================================
+my_date Borrow::generate_date()
+{
+
+	std::string current_date="";
+	
+	do 
+	{
+		std::cout << "Enter borrow date" << std::endl;
+		std::getline(std::cin, current_date);
+		
+	} while (!std::regex_match(current_date, std::regex(R"(\d{4}-\d{2}-\d{2})")));
+
+	return my_date(current_date);
+
+	/*std::stringstream ss;
+	ss.str(current_date);
+
+	std::vector<int> v;
+	std::string str_temp;
+
+	while (std::getline(ss, str_temp, '-'))
+	{
+		v.emplace_back(std::stoi(str_temp));
+	}
+
+	return std::make_tuple(v[0], v[1], v[2]);*/
+}
+
+
 
 // COUT OPERATOR ========================================================================
 std::ostream& operator<<(std::ostream& out, const Borrow& b)

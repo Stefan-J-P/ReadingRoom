@@ -44,7 +44,6 @@ struct BookHasher
 
 
 
-
 struct BookComparatorShdPtr
 {
 	bool operator()(const std::shared_ptr<Book>& b1, const std::shared_ptr<Book>& b2) const

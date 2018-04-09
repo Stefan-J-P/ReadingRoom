@@ -7,6 +7,10 @@
 #include <memory>
 #include <cstdlib>
 #include <ctime>
+#include <regex>
+#include <sstream>
+#include <iomanip>
+#include <tuple>
 
 
 class Reader
@@ -19,7 +23,7 @@ private:
 
 public:
 	// CONSTRUCTOR
-	Reader() = default;
+	Reader();
 	Reader(const std::string& first_name, const std::string& last_name, const int age, const double fine);
 
 	// GETTERS & SETTERS

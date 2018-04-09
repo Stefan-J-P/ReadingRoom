@@ -113,12 +113,17 @@
   <ItemGroup>
     <ClInclude Include="Book.h" />
     <ClInclude Include="Borrow.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="My_Date.h" />
+    <ClInclude Include="my_exception.h" />
     <ClInclude Include="Reader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="Borrow.cpp" />
     <ClCompile Include="MAIN.cpp" />
+    <ClCompile Include="My_Date.cpp" />
+    <ClCompile Include="my_exception.cpp" />
     <ClCompile Include="Reader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,6 +1,7 @@
 #pragma once
 #include "Book.h"
 #include <map>
+#include "My_Date.h"
 
 
 struct ReaderHasher
@@ -37,12 +38,13 @@ class Borrow
 private:
 	std::shared_ptr<Book> book;
 	std::shared_ptr<Reader> reader;
-	std::string borrow_date;
+	my_date borrow_date;
+
 
 public:
 	// CONSTRUCTOR
-	Borrow() = delete;
-	Borrow(const std::shared_ptr<Book>& book, const std::shared_ptr<Reader>& reader, const std::string& borrow_date);
+	Borrow() = default;
+	Borrow(const std::shared_ptr<Book>& book, const std::shared_ptr<Reader>& reader, const my_date& borrow_date);
 
 	static std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> generate_borrow_list(std::unordered_set<std::shared_ptr<Reader>, ReaderHasher, ReaderComparatorShdPtr>& readers,
 		std::unordered_set<std::shared_ptr<Book>, BookHasher, BookComparatorShdPtr>& books);
@@ -52,14 +54,14 @@ public:
 
 	std::shared_ptr<Book> get_book() const;
 
-	std::string get_borrow_date() const;
+	my_date get_borrow_date() const;
 
 	// COUT OPERATOR
 	friend std::ostream& operator<< (std::ostream& out, const Borrow& b);
 
 	// METHODS
-	static std::map<std::shared_ptr<Reader>, double>createMap(std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows);
-
+	static std::map<std::shared_ptr<Reader>, double>make_borrow(std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows);
+	static my_date generate_date();
 
 };
 

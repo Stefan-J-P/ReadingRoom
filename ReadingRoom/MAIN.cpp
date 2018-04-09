@@ -2,9 +2,7 @@
 
 int main()
 {
-	Reader c1;
-	Book k1;
-
+/*
 	// COLLECTION READER
 	std::unordered_set<std::shared_ptr<Reader>, ReaderHasher, ReaderComparatorShdPtr> readers = {
 		std::make_shared<Reader>(Reader("Michael", "Jordan", 33, 0.0)),
@@ -26,7 +24,7 @@ int main()
 		std::make_shared<Book>(Book("Eleanor Oliphant is completely fine", "Gail Honeyman", 20)),
 		std::make_shared<Book>(Book("A court of wings and rain", "Sarah J Maas", 20)),
 		std::make_shared<Book>(Book("Norse mythology", "Molier", 20)),
-		std::make_shared<Book>(Book("Chlopi", "Neil Gaiman", 20)),
+		std::make_shared<Book>(Book("Verdens beste land", "Nina Witoszek", 20)),
 		std::make_shared<Book>(Book("Origin", "Dan Brown", 20))
 	};
 
@@ -39,17 +37,70 @@ int main()
 		std::cout << *b << std::endl;
 	}
 
-	std::map<std::shared_ptr<Reader>, double> mm = Borrow::createMap(borrows);
+	std::map<std::shared_ptr<Reader>, double> mm = Borrow::make_borrow(borrows);
 
 	for (const auto& x : mm)
 	{
 		std::cout << *x.first << ' ' << x.second << std::endl;
-	}
+	}*/
 
+	// DATE & TIME ====================================================================
+
+
+	
+//	std::tuple<int, int, int> date = Borrow::generate_date();
+//	std::cout << std::get<0>(date) << '/' << std::get<1>(date) << '/' << std::get<2>(date) << std::endl;
+
+
+	
+	Reader r1;
+
+	//r1.add_new_reader();
+
+	std::cout << r1 << std::endl;
+
+	//my_date d1(2018, 03, 13);
+
+	//std::cout << Borrow::generate_date();
 
 
 
 	std::cin.get();
 	return 0;
 }
+
+
+
+
+
+
+/*
+Zaimplementuj mapê, w której jako klucz umieœcisz czytelnika, 
+a jako wartoœæ wysokoœæ kary, któr¹ czytelnik ma zap³aciæ. 
+
+Nastêpnie zaimplementuj metodê, która pobierze aktualn¹ datê i na podstawie prostego za³o¿enia, 
+¿e po 2 tygodniach od wypo¿yczenia ka¿dy kolejny dzieñ to 5 z³ kary, 
+bêdzie ustawiaæ w mapie wartoœæ kary, któr¹ czytelnik musi zap³aciæ. 
+Dla czytelników poni¿ej 18 roku ¿ycia wartoœæ kary jest zmniejszana o 50%. 
+
+Pamiêtaj, ¿e wypo¿yczona mo¿e byæ tylko jedna ksi¹¿ka, a jeden czytelnik mo¿e wypo¿yczyæ wiele ksi¹¿ek. 
+Na koniec z mapy wypisz wszystkich czytelników, którzy musz¹ zap³aciæ karê oraz wysokoœæ tej kary.
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
