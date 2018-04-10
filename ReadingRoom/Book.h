@@ -4,6 +4,7 @@
 //struct BookComparatorShdPtr;
 
 
+
 class Book
 {
 private:

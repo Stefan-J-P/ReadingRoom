@@ -4,6 +4,7 @@
 #include "My_Date.h"
 
 
+
 struct ReaderHasher
 {
 	size_t operator()(const std::shared_ptr<Reader>& r) const

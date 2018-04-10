@@ -4,8 +4,6 @@
 
 
 
-
-
 class my_date
 {
 private:

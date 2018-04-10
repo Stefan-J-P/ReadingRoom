@@ -1,7 +1,6 @@
 #pragma once
 #include"my_lib.h"
 
-
 class Reader
 {
 private:
