@@ -17,21 +17,20 @@ my_date Borrow::get_borrow_date() const
 	return borrow_date;
 }
 
-// ============================================================
-std::map<std::shared_ptr<Reader>, double> Borrow::make_borrow(std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows)
+// MAKE BORROW =============================================================================================================
+std::map<std::shared_ptr<Reader>, double> Borrow::add_fine(std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows)
 {
 	std::map<std::shared_ptr<Reader>, double> m;
 
 	for (const auto& b : borrows)
 	{
-		double fine = rand() % 10 + 1;
+		double fine = 20;
 		if (b->get_reader()->get_age() < 18)
 		{
-			fine *= 0.5; //fine = fine * 0.5;
+			fine *= 0.5; 
 		}
 		if (m.find(b->get_reader()) != m.end())
 		{
-			
 			// add fine to each reader
 			m[b->get_reader()] += fine;
 		}
@@ -45,11 +44,11 @@ std::map<std::shared_ptr<Reader>, double> Borrow::make_borrow(std::unordered_set
 }
 
 
-// -------------------------------------------------------------
-
 // CONSTRUCTOR ============================================================================================================
 Borrow::Borrow(const std::shared_ptr<Book>& book, const std::shared_ptr<Reader>& reader, const my_date& borrow_date)
 : book(book), reader(reader), borrow_date(borrow_date) {}
+
+
 
 // GENERATE BORROW LIST ===================================================================================================
 std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> Borrow::generate_borrow_list(
@@ -63,8 +62,8 @@ std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparator
 	for (const auto& reader : readers)
 	{
 		const std::shared_ptr<Book> s1 = *it_books;
-		borrows.insert(std::make_shared<Borrow>
-			(Borrow(std::make_shared<Book>(*s1), std::make_shared<Reader>(*reader), borrow_date = Borrow::generate_date()));
+
+		borrows.insert(std::make_shared<Borrow>(Borrow(std::make_shared<Book>(*s1), std::make_shared<Reader>(*reader), Borrow::generate_date())));
 		++it_books;
 	}
 	return borrows;

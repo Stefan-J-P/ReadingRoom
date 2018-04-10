@@ -1,5 +1,7 @@
 #include "Reader.h"
 
+
+// CONSTRUCTOR ============================================================================
 Reader::Reader()
 {
 	std::string fn;
@@ -8,11 +10,9 @@ Reader::Reader()
 
 
 	std::cout << "Enter reader's first name" << std::endl;
-	//std::cin >> r1.get_first_name();	pobieranie przez cin, tylko do pierwszej spacji
 	std::getline(std::cin, fn);
 
 	std::cout << "Enter reader's last name" << std::endl;
-	//std::cin >> r1.get_last_name();
 	std::getline(std::cin, ln);
 
 	std::cout << "Enter reader's age" << std::endl;
@@ -26,12 +26,12 @@ Reader::Reader()
 }
 
 // CONSTRUCTOR ============================================================================
-Reader::Reader(const std::string& imie, const std::string& nazwisko, const int wiek, const double wysKary)
+Reader::Reader(const std::string& imie, const std::string& nazwisko, const int wiek, const double fine_amount)
 {
 	set_first_name(imie);
 	set_last_name(nazwisko);
 	set_age(wiek);
-	set_fine(wysKary);
+	set_fine(fine_amount);
 }
 
 // GETTERS & SETTERS ======================================================================
@@ -79,7 +79,7 @@ void Reader::set_fine(const double fine_amount)
 }
 
 
-// =================================================================
+// COMPARSION OPERATOR =================================================================
 bool Reader::operator==(const Reader& r) const
 {
 	return	this->get_first_name() == r.get_first_name() &&

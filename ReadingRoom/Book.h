@@ -12,7 +12,7 @@ private:
 	double prolongation_price;
 public:
 	// CONSTRUCTOR
-	Book() = default;
+	Book();
 	Book(const std::string& title, const std::string& author, const double prolo_price);
 
 	// GETTERS & SETTERS

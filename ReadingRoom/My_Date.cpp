@@ -123,6 +123,21 @@ my_date::my_date(const my_date& md)
 
 }
 
+int my_date::get_year() const
+{
+	return t_->tm_year + 1900;
+}
+
+int my_date::get_month() const
+{
+	return t_->tm_mon + 1;
+}
+
+int my_date::get_day() const
+{
+	return t_->tm_mday;
+}
+
 // OPERATOR - ===========================================================================
 double my_date::operator-(const my_date& date) const
 {
@@ -130,6 +145,13 @@ double my_date::operator-(const my_date& date) const
 	time_t d2 = date.to_time_t();
 
 	return (d1 - d2) / sec_per_day;
+}
+
+bool my_date::operator==(const my_date& my_d) const
+{
+	return this->get_year() == my_d.get_year() &&
+	this->get_month() == my_d.get_month() &&
+	this->get_day() == my_d.get_day();
 }
 
 

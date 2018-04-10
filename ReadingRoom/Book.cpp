@@ -1,6 +1,23 @@
 #include "Book.h"
 
-// CONSTRUCTOR =============================================================================
+// CONSTRUCTOR - non parameter =============================================================
+Book::Book()
+{
+	std::string new_title;
+	std::string new_author;
+
+	std::cout << "Enter title of new book" << std::endl;
+	std::getline(std::cin, new_title);
+
+	std::cout << "Enter name of the new author" << std::endl;
+	std::getline(std::cin, new_author);
+
+	set_title(new_title);
+	set_author(new_author);
+	set_prolongation_price(0);
+}
+
+// CONSTRUCTOR - parameter =================================================================
 Book::Book(const std::string& title, const std::string& author, const double prolo_price)
 {
 	set_title(title);
@@ -42,7 +59,7 @@ void Book::set_prolongation_price(const double prolo_price)
 	this->prolongation_price = prolo_price;
 }
 
-// =============================================================
+// COMPARISON OPERATOR =====================================================================
 bool Book::operator==(const Book& b) const
 {
 	return	this->get_author() == b.get_author() &&

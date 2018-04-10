@@ -2,6 +2,10 @@
 
 #include "Header.h"
 
+
+
+
+
 class my_date
 {
 private:
@@ -20,7 +24,12 @@ public:
 	explicit my_date(const std::string& date_str);
 	my_date(const my_date& md);
 
+	int get_year() const;
+	int get_month() const;
+	int get_day() const;
+
 	double operator-(const my_date& date) const;
+	bool operator==(const my_date& my_d) const;
 
 	friend std::ostream& operator<<(std::ostream& out, const my_date& date);
 

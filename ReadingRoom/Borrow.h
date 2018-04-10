@@ -32,6 +32,14 @@ struct BorrowHasherShdPtr;
 struct BorrowComparatorShdPtr;
 
 
+struct MyDateHasher
+{
+	size_t operator()(const my_date& my_d) const
+	{
+		return std::hash<int>()(my_d.get_year()) + 31 * std::hash<int>()(my_d.get_month()) + 31 * std::hash<int>()(my_d.get_day());
+	}
+};
+
 
 class Borrow
 {
@@ -60,7 +68,7 @@ public:
 	friend std::ostream& operator<< (std::ostream& out, const Borrow& b);
 
 	// METHODS
-	static std::map<std::shared_ptr<Reader>, double>make_borrow(std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows);
+	static std::map<std::shared_ptr<Reader>, double>add_fine(std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows);
 	static my_date generate_date();
 
 };
@@ -72,7 +80,8 @@ struct BorrowHasherShdPtr
 	{
 		ReaderHasher rh;
 		BookHasher bh;
-		return rh(b->get_reader()) + 31 * bh(b->get_book()) + 31 * std::hash<std::string>()(b->get_borrow_date());
+		MyDateHasher mdh;
+		return rh(b->get_reader()) + 31 * bh(b->get_book()) + 31 * mdh(b->get_borrow_date());
 	}
 };
 

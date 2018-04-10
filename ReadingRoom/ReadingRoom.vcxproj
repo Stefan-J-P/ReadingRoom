@@ -116,6 +116,7 @@
     <ClInclude Include="Header.h" />
     <ClInclude Include="My_Date.h" />
     <ClInclude Include="my_exception.h" />
+    <ClInclude Include="my_lib.h" />
     <ClInclude Include="Reader.h" />
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,7 @@
 int main()
 {
 /*
-	// COLLECTION READER
+	// COLLECTION READERs
 	std::unordered_set<std::shared_ptr<Reader>, ReaderHasher, ReaderComparatorShdPtr> readers = {
 		std::make_shared<Reader>(Reader("Michael", "Jordan", 33, 0.0)),
 		std::make_shared<Reader>(Reader("Donald", "Trump", 58, 0.0)),
@@ -14,7 +14,7 @@ int main()
 		std::make_shared<Reader>(Reader("Ingvild", "Deila", 50, 0.0))
 	};
 
-	// COLLECTION BOOK
+	// COLLECTION BOOKs
 	std::unordered_set<std::shared_ptr<Book>, BookHasher, BookComparatorShdPtr> books = {
 		std::make_shared<Book>(Book("Little Fires", "Celeste Ng", 20)),
 		std::make_shared<Book>(Book("Into the water", "Paula Hawkins", 20)),
@@ -37,7 +37,7 @@ int main()
 		std::cout << *b << std::endl;
 	}
 
-	std::map<std::shared_ptr<Reader>, double> mm = Borrow::make_borrow(borrows);
+	std::map<std::shared_ptr<Reader>, double> mm = Borrow::add_fine(borrows);
 
 	for (const auto& x : mm)
 	{
@@ -53,54 +53,14 @@ int main()
 
 
 	
-	Reader r1;
+	/*Reader r1;
+	std::cout << r1 << std::endl;*/
 
-	//r1.add_new_reader();
-
-	std::cout << r1 << std::endl;
-
-	//my_date d1(2018, 03, 13);
-
-	//std::cout << Borrow::generate_date();
+	Book b1;
+	std::cout << b1 << std::endl;
 
 
 
 	std::cin.get();
 	return 0;
 }
-
-
-
-
-
-
-/*
-Zaimplementuj mapê, w której jako klucz umieœcisz czytelnika, 
-a jako wartoœæ wysokoœæ kary, któr¹ czytelnik ma zap³aciæ. 
-
-Nastêpnie zaimplementuj metodê, która pobierze aktualn¹ datê i na podstawie prostego za³o¿enia, 
-¿e po 2 tygodniach od wypo¿yczenia ka¿dy kolejny dzieñ to 5 z³ kary, 
-bêdzie ustawiaæ w mapie wartoœæ kary, któr¹ czytelnik musi zap³aciæ. 
-Dla czytelników poni¿ej 18 roku ¿ycia wartoœæ kary jest zmniejszana o 50%. 
-
-Pamiêtaj, ¿e wypo¿yczona mo¿e byæ tylko jedna ksi¹¿ka, a jeden czytelnik mo¿e wypo¿yczyæ wiele ksi¹¿ek. 
-Na koniec z mapy wypisz wszystkich czytelników, którzy musz¹ zap³aciæ karê oraz wysokoœæ tej kary.
-
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
