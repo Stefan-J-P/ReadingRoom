@@ -2,8 +2,6 @@
 
 #include "Header.h"
 
-
-
 class my_date
 {
 private:

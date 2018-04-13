@@ -61,7 +61,7 @@ std::tuple<int, int, int> my_date::convert_str_to_int_date(const std::string& da
 	std::string str;
 	while (std::getline(ss, str, '-'))	// separate string after '-' and insert to string
 	{
-		v.emplace_back(std::stoi(str));	// stoi --> string to int , ladujemy do vectora
+		v.emplace_back(std::stoi(str));	// stoi --> string to int , insert into vector
 	}
 
 	if (!is_date_correct(v[0], v[1], v[2]))
@@ -80,6 +80,7 @@ bool my_date::is_leap_year(const int year)
 // IS DATE CORRECT ======================================================================
 bool my_date::is_date_correct(const int year, const int month, const int day)
 {
+	// verify the date according to number of days in each month + lap year
 	switch (month)
 	{
 	case 1:
@@ -106,7 +107,7 @@ bool my_date::is_date_correct(const int year, const int month, const int day)
 my_date::my_date(const int year, const int month, const int day) : my_date(std::make_tuple(year, month, day)) {}
 my_date::my_date(const std::string& date_str) : my_date(convert_str_to_int_date(date_str)) {}
 
-// COPY CONSTRUCTOR
+// COPY CONSTRUCTOR ==========================================================================
 my_date::my_date(const my_date& md)
 {
 	this->t_ = new tm;
@@ -121,9 +122,9 @@ my_date::my_date(const my_date& md)
 	t_->tm_mday = md.t_->tm_mday;
 	t_->tm_mon = md.t_->tm_mon;
 	t_->tm_year = md.t_->tm_year;
-
 }
 
+// GETTERS ==============================================================================
 int my_date::get_year() const
 {
 	return t_->tm_year + 1900;
@@ -148,6 +149,7 @@ double my_date::operator-(const my_date& date) const
 	return (d1 - d2) / sec_per_day;
 }
 
+// COMPARISON OPERATOR ===================================================================
 bool my_date::operator==(const my_date& my_d) const
 {
 	return this->get_year() == my_d.get_year() &&
@@ -161,7 +163,7 @@ std::ostream& operator<<(std::ostream& out, const my_date& date)
 {
 	std::string month_str = "";
 
-
+	// show date in format 03 not 3
 	if (date.t_->tm_mon <= 8)
 	{
 		month_str += "0";

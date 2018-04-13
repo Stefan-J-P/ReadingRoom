@@ -3,7 +3,7 @@
 
 int main()
 {
-/*
+
 	// COLLECTION READERs
 	std::unordered_set<std::shared_ptr<Reader>, ReaderHasher, ReaderComparatorShdPtr> readers = {
 		std::make_shared<Reader>(Reader("Michael", "Jordan", 33, 0.0)),
@@ -43,22 +43,19 @@ int main()
 	for (const auto& x : mm)
 	{
 		std::cout << *x.first << ' ' << x.second << std::endl;
-	}*/
+	}
 
-	// DATE & TIME ====================================================================
-
-
-	
-//	std::tuple<int, int, int> date = Borrow::generate_date();
-//	std::cout << std::get<0>(date) << '/' << std::get<1>(date) << '/' << std::get<2>(date) << std::endl;
+		
+	/*std::tuple<int, int, int> date = Borrow::generate_date();
+	std::cout << std::get<0>(date) << '/' << std::get<1>(date) << '/' << std::get<2>(date) << std::endl;*/
 
 
 	
 	/*Reader r1;
-	std::cout << r1 << std::endl;*/
+	std::cout << r1 << std::endl;
 
 	Book b1;
-	std::cout << b1 << std::endl;
+	std::cout << b1 << std::endl;*/
 
 
 

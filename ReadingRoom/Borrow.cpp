@@ -1,5 +1,8 @@
 #include "Borrow.h"
 
+// CONSTRUCTOR ============================================================================================================
+Borrow::Borrow(const std::shared_ptr<Book>& book, const std::shared_ptr<Reader>& reader, const my_date& borrow_date)
+	: book(book), reader(reader), borrow_date(borrow_date) {}
 
 
 // GETTERS & SETTERS =======================================================================================================
@@ -18,26 +21,27 @@ my_date Borrow::get_borrow_date() const
 	return borrow_date;
 }
 
-// MAKE BORROW =============================================================================================================
+// ADD FINE =============================================================================================================
 std::map<std::shared_ptr<Reader>, double> Borrow::add_fine(std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows)
 {
 	std::map<std::shared_ptr<Reader>, double> m;
 
+	
 	for (const auto& b : borrows)
 	{
 		double fine = 20;
-		if (b->get_reader()->get_age() < 18)
+		if (b->get_reader()->get_age() < 18)	// check if reader is under 18 years old
 		{
-			fine *= 0.5; 
+			fine *= 0.5;	// reduce fine by 50%
 		}
-		if (m.find(b->get_reader()) != m.end())
+		if (m.find(b->get_reader()) != m.end())	
 		{
 			// add fine to each reader
 			m[b->get_reader()] += fine;
 		}
 		else
 		{
-			m[b->get_reader()] = fine;
+			m[b->get_reader()] = fine;	// add fine to the reader (if he's over 18)
 		}
 		b->get_reader()->set_fine(b->get_reader()->get_fine() + fine);
 	}
@@ -45,17 +49,12 @@ std::map<std::shared_ptr<Reader>, double> Borrow::add_fine(std::unordered_set<st
 }
 
 
-// CONSTRUCTOR ============================================================================================================
-Borrow::Borrow(const std::shared_ptr<Book>& book, const std::shared_ptr<Reader>& reader, const my_date& borrow_date)
-: book(book), reader(reader), borrow_date(borrow_date) {}
-
-
-
 // GENERATE BORROW LIST ===================================================================================================
 std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> Borrow::generate_borrow_list(
 	std::unordered_set<std::shared_ptr<Reader>, ReaderHasher, ReaderComparatorShdPtr>& readers,
 	std::unordered_set<std::shared_ptr<Book>, BookHasher, BookComparatorShdPtr>& books)
 {
+	// Generate borrow list from manually created set of readers and books
 
 	std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparatorShdPtr> borrows;
 	std::unordered_set<std::shared_ptr<Book>, BookHasher, BookComparatorShdPtr>::iterator it_books = books.begin();
@@ -73,7 +72,7 @@ std::unordered_set<std::shared_ptr<Borrow>, BorrowHasherShdPtr, BorrowComparator
 // GENERATE DATE ========================================================================
 my_date Borrow::generate_date()
 {
-
+	// Generate date from data entered by user in string format
 	std::string current_date = "";
 	
 	do 

@@ -1,6 +1,6 @@
 #include "Reader.h"
 
-// CONSTRUCTOR ============================================================================
+// CONSTRUCTOR - non parameter ============================================================
 Reader::Reader()
 {
 	std::string fn;
@@ -24,11 +24,11 @@ Reader::Reader()
 	set_fine(0);
 }
 
-// CONSTRUCTOR ============================================================================
-Reader::Reader(const std::string& imie, const std::string& nazwisko, const int wiek, const double fine_amount)
+// CONSTRUCTOR - parameter ================================================================
+Reader::Reader(const std::string& f_name, const std::string& l_name, const int wiek, const double fine_amount)
 {
-	set_first_name(imie);
-	set_last_name(nazwisko);
+	set_first_name(f_name);
+	set_last_name(l_name);
 	set_age(wiek);
 	set_fine(fine_amount);
 }
